@@ -48,7 +48,7 @@ See `github-deployment-guide.md` for detailed instructions.
 ## 📧 Contact
 
 - **Email**: uwaismohamed208@gmail.com
-- **LinkedIn**: [Mohamed Uwais M N](https://www.linkedin.com/in/mohamed-uwais-m-n-144a7428b)
+- **LinkedIn**: [Mohamed Uwais M N](https://www.linkedin.com/in/mohamed-uwais-m-n/)
 - **Location**: Tirunelveli, Tamil Nadu, India
 
 ## 📄 License

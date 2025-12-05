@@ -8,7 +8,7 @@ const projectsData = [
         title: "Netflix Shows Dashboard",
         description: "Developed an interactive Netflix Shows Dashboard using Tableau, enhancing data visualization and viewer insights",
         tech: ["Tableau", "Data Visualization", "Data Analysis"],
-        github: "#",
+        github: "https://github.com/uwais12345/NetflixDashboard-Using-Tableau",
         live: "#"
     },
     {
@@ -16,7 +16,7 @@ const projectsData = [
         title: "Multiple File Uploading System",
         description: "Developed a secure multi-file upload system using Java sockets with real-time updates and integrated analytics",
         tech: ["Java", "Sockets", "Real-time Updates"],
-        github: "#",
+        github: "https://github.com/uwais12345/MultipleFileuploadingSystem-in-CN-Project",
         live: "#"
     },
     {
@@ -24,7 +24,7 @@ const projectsData = [
         title: "HR Management Analysis",
         description: "Performed comprehensive HR Management Analysis using R to provide insights into employee metrics",
         tech: ["R Language", "Data Analysis", "Statistics"],
-        github: "#",
+        github: "https://github.com/uwais12345/HR-Management-Analysis-Using-R",
         live: "#"
     }
 ];
