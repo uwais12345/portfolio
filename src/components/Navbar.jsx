@@ -108,8 +108,20 @@ const Navbar = () => {
                                         key={link.name}
                                         href={link.href}
                                         onClick={(e) => {
-                                            // Close menu after a brief delay to allow smooth scroll
-                                            setTimeout(() => setIsOpen(false), 300);
+                                            e.preventDefault();
+                                            setIsOpen(false);
+                                            // Unlock body immediately to allow scroll
+                                            document.body.style.overflow = 'unset';
+
+                                            // Find target and scroll smoothly
+                                            const targetId = link.href.replace('#', '');
+                                            const element = document.getElementById(targetId);
+                                            if (element) {
+                                                // Small delay to allow menu exit animation to start/UI to update
+                                                setTimeout(() => {
+                                                    element.scrollIntoView({ behavior: 'smooth' });
+                                                }, 100);
+                                            }
                                         }}
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}

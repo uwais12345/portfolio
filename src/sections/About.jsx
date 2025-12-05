@@ -25,7 +25,7 @@ const About = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                            An aspiring Full Stack Developer with hands-on experience in both Front-end and Back-end technologies.
+                            A Software Developer with hands-on experience in both Front-end and Back-end technologies.
                             Strong command in programming languages like C, Java, and Python, as well as proficiency in HTML, CSS, and JavaScript frameworks such as React.
                         </p>
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">

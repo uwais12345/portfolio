@@ -21,7 +21,7 @@ const Hero = () => {
                                 Mohamed Uwais M N
                             </h1>
                             <h3 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
-                                Aspiring Full Stack Developer
+                                Software Developer
                             </h3>
                         </motion.div>
 
