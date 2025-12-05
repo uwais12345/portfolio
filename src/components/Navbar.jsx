@@ -15,6 +15,19 @@ const Navbar = () => {
         localStorage.setItem('theme', theme);
     }, [theme]);
 
+    useEffect(() => {
+        // Lock body scroll when mobile menu is open
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // Cleanup on unmount
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
@@ -59,16 +72,19 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="md:hidden flex items-center">
+                    <div className="md:hidden flex items-center gap-2">
                         <button
                             onClick={toggleTheme}
-                            className="p-2 mr-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
+                            className="p-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                            aria-label="Toggle Theme"
                         >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                            {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
                         </button>
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 focus:outline-none"
+                            className="p-3 rounded-md text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+                            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={isOpen}
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -82,19 +98,25 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800"
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="md:hidden overflow-hidden"
                     >
-                        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                            {navLinks.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-slate-50 dark:hover:bg-slate-800"
-                                >
-                                    {link.name}
-                                </a>
-                            ))}
+                        <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800 shadow-lg">
+                            <div className="px-4 pt-3 pb-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
+                                {navLinks.map((link, index) => (
+                                    <motion.a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.3, delay: index * 0.05 }}
+                                        className="block px-4 py-3 rounded-lg text-base font-medium text-slate-700 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-slate-800 transition-all duration-200 active:scale-95 min-h-[48px] flex items-center"
+                                    >
+                                        {link.name}
+                                    </motion.a>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
                 )}
