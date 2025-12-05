@@ -107,7 +107,10 @@ const Navbar = () => {
                                     <motion.a
                                         key={link.name}
                                         href={link.href}
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={(e) => {
+                                            // Close menu after a brief delay to allow smooth scroll
+                                            setTimeout(() => setIsOpen(false), 300);
+                                        }}
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ duration: 0.3, delay: index * 0.05 }}
