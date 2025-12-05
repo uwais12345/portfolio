@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-8 md:mb-0 text-center md:text-left">
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-2">
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-cyan-500 bg-clip-text text-transparent mb-2">
                             Mohamed Uwais M N
                         </h3>
                         <p className="text-slate-600 dark:text-slate-400">
@@ -17,22 +17,22 @@ const Footer = () => {
 
                     <div className="flex space-x-6">
                         <a
-                            href="https://www.linkedin.com/in/mohamed-uwais-m-n-144a7428b"
+                            href="https://www.linkedin.com/in/mohamed-uwais"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            className="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                             <Linkedin size={24} />
                         </a>
                         <a
                             href="mailto:uwaismohamed208@gmail.com"
-                            className="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            className="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                             <Mail size={24} />
                         </a>
                         <a
                             href="tel:+918056793899"
-                            className="text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            className="text-slate-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                         >
                             <Phone size={24} />
                         </a>

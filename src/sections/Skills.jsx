@@ -3,28 +3,20 @@ import { motion } from 'framer-motion';
 
 const skillsData = [
     {
-        category: "Languages",
-        skills: ["Java", "Python", "C", "JavaScript", "SQL", "R"]
-    },
-    {
-        category: "Web Development",
-        skills: ["React.js", "Spring Boot", "HTML", "CSS", "Tailwind CSS"]
-    },
-    {
-        category: "Database",
-        skills: ["MySQL", "SQL"]
-    },
-    {
-        category: "Tools & Analysis",
-        skills: ["Tableau", "Git", "VS Code"]
+        category: "Technical Skills",
+        skills: ["C", "Java", "Python", "HTML", "CSS", "Database SQL", "MySQL"]
     },
     {
         category: "Soft Skills",
-        skills: ["Communication", "Teamwork", "Time Management", "Leadership"]
+        skills: [
+            "Strong organizational and time-management skills",
+            "Exceptional communication and interpersonal skills",
+            "Ability to work independently and as part of a team"
+        ]
     },
     {
         category: "Certifications",
-        skills: ["NPTEL - IoT", "Udemy - Java Scratch", "Digital Marketing Workshop"]
+        skills: ["NPTEL - Introduction To Internet Of Things", "Udemy - Java Scratch Fundamentals"]
     }
 ];
 
@@ -40,7 +32,7 @@ const Skills = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Technical Skills & Certifications</h2>
-                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -53,7 +45,7 @@ const Skills = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-700"
                         >
-                            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2">
+                            <h3 className="text-xl font-semibold text-orange-600 dark:text-orange-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2">
                                 {category.category}
                             </h3>
                             <div className="flex flex-wrap gap-2">

@@ -14,10 +14,10 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-xl md:text-2xl font-medium text-blue-600 dark:text-blue-400 mb-2">
+                            <h2 className="text-xl md:text-2xl font-medium text-orange-600 dark:text-orange-400 mb-2">
                                 Hello, I'm
                             </h2>
-                            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4">
+                            <h1 className="text-3xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4">
                                 Mohamed Uwais M N
                             </h1>
                             <h3 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
@@ -43,14 +43,14 @@ const Hero = () => {
                         >
                             <a
                                 href="#contact"
-                                className="px-8 py-3 rounded-full bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                                className="px-8 py-3 rounded-full bg-orange-600 text-white font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2"
                             >
                                 Contact Me <ArrowRight size={20} />
                             </a>
                             <a
                                 href="/resume.pdf"
                                 download
-                                className="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-colors flex items-center justify-center gap-2"
+                                className="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-colors flex items-center justify-center gap-2"
                             >
                                 Download Resume <Download size={20} />
                             </a>
@@ -63,13 +63,13 @@ const Hero = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="md:w-1/2 mt-12 md:mt-0 flex justify-center"
                     >
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_60px_rgba(59,130,246,0.5)] hover:border-blue-400 dark:hover:border-blue-500 cursor-pointer group">
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_60px_rgba(249,115,22,0.5)] hover:border-orange-400 dark:hover:border-orange-500 cursor-pointer group">
                             <img
                                 src={profileImg}
                                 alt="Mohamed Uwais M N"
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                     </motion.div>
                 </div>

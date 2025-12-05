@@ -14,7 +14,7 @@ const About = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">About Me</h2>
-                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -26,11 +26,10 @@ const About = () => {
                     >
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                             An aspiring Full Stack Developer with hands-on experience in both Front-end and Back-end technologies.
-                            I have a strong command in programming languages like C, Java, and Python, as well as proficiency in HTML, CSS, and JavaScript frameworks such as React.
+                            Strong command in programming languages like C, Java, and Python, as well as proficiency in HTML, CSS, and JavaScript frameworks such as React.
                         </p>
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                            I am seeking an internship opportunity to further apply and enhance my skills while gaining relevant industry experience.
-                            Currently pursuing my B.Tech in Computer Science and Business Systems at Francis Xavier Engineering College with a CGPA of 8.04.
+                            Seek an internship opportunity to further apply and enhance my skills while gaining relevant industry experience.
                         </p>
                     </motion.div>
 
@@ -60,7 +59,7 @@ const About = () => {
                                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                                 className="p-6 bg-slate-50 dark:bg-slate-700 rounded-xl hover:shadow-lg transition-shadow"
                             >
-                                <div className="text-blue-600 dark:text-blue-400 mb-4">{item.icon}</div>
+                                <div className="text-orange-600 dark:text-orange-400 mb-4">{item.icon}</div>
                                 <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{item.title}</h3>
                                 <p className="text-slate-600 dark:text-slate-300">{item.desc}</p>
                             </motion.div>

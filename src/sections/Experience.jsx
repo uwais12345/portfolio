@@ -8,7 +8,7 @@ const experienceData = [
         title: "Software Engineer Intern",
         institution: "ASTA SYSTECH",
         period: "Training",
-        description: "Currently pursuing a 6-month internship. Working with technologies including Java, Spring Boot, React.js, JavaScript, and MySQL. Gaining practical experience in full-stack web development and agile software practices."
+        description: "Completed a 6-month internship as a Software Engineering Intern. Worked on Java, Spring Boot, ReactJS, and MySQL for full-stack development. Gained hands-on experience in API integration, debugging, and Agile workflow."
     },
     {
         type: "education",
@@ -20,9 +20,9 @@ const experienceData = [
     {
         type: "experience",
         title: "In-Plant Training",
-        institution: "AI/ML Training",
+        institution: "Codebind Technologies",
         period: "4 Weeks",
-        description: "Completed a 4-week training focused on Artificial Intelligence and Machine Learning. Gained practical knowledge of AI/ML concepts, algorithms, and worked on hands-on projects."
+        description: "Completed a 4-week In-Plant Training focused on Artificial Intelligence and Machine Learning. Gained practical knowledge of AI/ML concepts, algorithms, and worked on hands-on projects. Completed a workshop on Digital Marketing."
     },
     {
         type: "education",
@@ -45,7 +45,7 @@ const Experience = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Experience & Education</h2>
-                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 <div className="relative max-w-4xl mx-auto">
@@ -63,12 +63,12 @@ const Experience = () => {
                                 }`}
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-slate-900 z-10 mt-6"></div>
+                            <div className="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-4 border-white dark:border-slate-900 z-10 mt-6"></div>
 
                             <div className="md:w-1/2 pl-8 md:pl-0">
                                 <div className={`bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-700 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                                     }`}>
-                                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
+                                    <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 mb-2">
                                         {item.type === 'education' ? <GraduationCap size={20} /> : <Briefcase size={20} />}
                                         <span className="text-sm font-medium uppercase tracking-wider">{item.type}</span>
                                     </div>
