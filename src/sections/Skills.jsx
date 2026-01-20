@@ -3,8 +3,20 @@ import { motion } from 'framer-motion';
 
 const skillsData = [
     {
-        category: "Technical Skills",
-        skills: ["C", "Java", "Python", "HTML", "CSS", "Database SQL", "MySQL"]
+        category: "Programming Languages",
+        skills: ["C", "Java", "Python"]
+    },
+    {
+        category: "Web Technologies",
+        skills: ["HTML", "CSS", "JavaScript", "ReactJS"]
+    },
+    {
+        category: "Frameworks & Databases",
+        skills: ["Spring Boot", "SQL", "MySQL"]
+    },
+    {
+        category: "Tools & Analysis",
+        skills: ["Tableau", "R Language"]
     },
     {
         category: "Soft Skills",
@@ -16,7 +28,15 @@ const skillsData = [
     },
     {
         category: "Certifications",
-        skills: ["NPTEL - Introduction To Internet Of Things", "Udemy - Java Scratch Fundamentals"]
+        skills: [
+            "NPTEL - Introduction To Internet Of Things",
+            "NPTEL - Cloud Computing",
+            "Udemy - Java Scratch Fundamentals"
+        ]
+    },
+    {
+        category: "Languages Known",
+        skills: ["English", "Tamil"]
     }
 ];
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Eye } from 'lucide-react';
 import profileImg from '../assets/profile.png';
 
 const Hero = () => {
@@ -31,8 +31,8 @@ const Hero = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto md:mx-0"
                         >
-                            Passionate about leveraging technology to solve real-world challenges.
-                            Specializing in Web Development and AI/ML.
+                            Aspiring Software Developer with hands-on experience in full-stack technologies.
+                            Passionate about leveraging Web Development and AI/ML to solve real-world challenges.
                         </motion.p>
 
                         <motion.div
@@ -48,7 +48,15 @@ const Hero = () => {
                                 Contact Me <ArrowRight size={20} />
                             </a>
                             <a
-                                href="/resume.pdf"
+                                href="/resume-preview.jpg"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-colors flex items-center justify-center gap-2"
+                            >
+                                View Resume <Eye size={20} />
+                            </a>
+                            <a
+                                href="/uwaisresume.pdf"
                                 download
                                 className="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-colors flex items-center justify-center gap-2"
                             >

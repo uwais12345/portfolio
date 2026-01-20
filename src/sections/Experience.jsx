@@ -7,8 +7,8 @@ const experienceData = [
         type: "experience",
         title: "Software Engineer Intern",
         institution: "ASTA SYSTECH",
-        period: "Training",
-        description: "Completed a 6-month internship as a Software Engineering Intern. Worked on Java, Spring Boot, ReactJS, and MySQL for full-stack development. Gained hands-on experience in API integration, debugging, and Agile workflow."
+        period: "2 Months",
+        description: "Completed a 2-month internship as a Software Engineering Intern at Asta Systech. Worked on Java, Spring Boot, ReactJS, and MySQL for full-stack development. Gained hands-on experience in API integration, debugging, and Agile workflow."
     },
     {
         type: "education",
