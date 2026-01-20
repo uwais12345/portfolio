@@ -25,11 +25,11 @@ const About = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                            A Software Developer with hands-on experience in both Front-end and Back-end technologies.
-                            Strong command in programming languages like C, Java, and Python, as well as proficiency in HTML, CSS, and JavaScript frameworks such as React.
+                            An aspiring Software Developer with hands-on experience in both front-end and back-end technologies.
+                            Strong command in C, Java, and Python, along with proficiency in HTML, CSS, JavaScript, and React.
                         </p>
                         <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Seek an internship opportunity to further apply and enhance my skills while gaining relevant industry experience.
+                            Seeking an internship opportunity to apply and enhance my skills while gaining relevant industry experience.
                         </p>
                     </motion.div>
 

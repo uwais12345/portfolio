@@ -11,12 +11,16 @@ const skillsData = [
         skills: ["HTML", "CSS", "JavaScript", "ReactJS"]
     },
     {
-        category: "Frameworks & Databases",
-        skills: ["Spring Boot", "SQL", "MySQL"]
+        category: "Frameworks",
+        skills: ["Spring Boot"]
     },
     {
-        category: "Tools & Analysis",
-        skills: ["Tableau", "R Language"]
+        category: "Databases",
+        skills: ["SQL", "MySQL"]
+    },
+    {
+        category: "Tools",
+        skills: ["Tableau", "R"]
     },
     {
         category: "Soft Skills",

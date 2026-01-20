@@ -21,7 +21,7 @@ const Hero = () => {
                                 Mohamed Uwais M N
                             </h1>
                             <h3 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
-                                Software Developer
+                                Aspiring Software Developer
                             </h3>
                         </motion.div>
 
@@ -29,10 +29,10 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-lg text-slate-600 dark:text-slate-400 max-w-lg mx-auto md:mx-0"
+                            className="text-lg text-slate-600 dark:text-slate-300 max-w-lg mx-auto md:mx-0"
                         >
-                            Aspiring Software Developer with hands-on experience in full-stack technologies.
-                            Passionate about leveraging Web Development and AI/ML to solve real-world challenges.
+                            Aspiring Software Developer with hands-on experience in both front-end and back-end technologies.
+                            Seeking an internship opportunity to apply and enhance my skills while gaining relevant industry experience.
                         </motion.p>
 
                         <motion.div
