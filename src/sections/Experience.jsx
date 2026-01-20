@@ -22,7 +22,7 @@ const experienceData = [
         title: "In-Plant Training",
         institution: "Codebind Technologies",
         period: "4 Weeks",
-        description: "Completed a 4-week In-Plant Training focused on Artificial Intelligence and Machine Learning. Gained practical knowledge of AI/ML concepts, algorithms, and worked on hands-on projects. Completed a workshop on Digital Marketing."
+        description: "Completed a 4-week in-plant training focused on Artificial Intelligence and Machine Learning. Gained practical knowledge of AI/ML concepts and algorithms through hands-on work. Completed a Digital Marketing workshop covering SEO, SEM, and social media marketing."
     },
     {
         type: "education",
