@@ -63,10 +63,10 @@ const Experience = () => {
                                 }`}
                         >
                             {/* Timeline Dot */}
-                            <div className="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-4 border-white dark:border-slate-900 z-10 mt-6"></div>
+                            <div className="absolute left-[-5px] md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-orange-600 rounded-full border-4 border-white dark:border-slate-900 z-10 mt-6 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></div>
 
                             <div className="md:w-1/2 pl-8 md:pl-0">
-                                <div className={`bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-700 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
+                                <div className={`bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 dark:border-slate-700 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
                                     }`}>
                                     <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 mb-2">
                                         {item.type === 'education' ? <GraduationCap size={20} /> : <Briefcase size={20} />}

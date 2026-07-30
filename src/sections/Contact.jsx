@@ -158,14 +158,14 @@ ${formData.message}`;
                                     onChange={handleChange}
                                     required
                                     rows="4"
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none"
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all resize-none shadow-sm"
                                     placeholder="Your message here..."
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full py-3 px-6 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition-colors flex items-center justify-center gap-2"
+                                className="w-full py-3 px-6 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2"
                             >
                                 Send Message on WhatsApp <Send size={20} />
                             </button>

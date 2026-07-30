@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Brain, Rocket } from 'lucide-react';
-
 const About = () => {
     return (
         <section id="about" className="py-20 bg-white dark:bg-slate-800 transition-colors duration-300">
@@ -24,11 +22,11 @@ const About = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        <p className="text-lg text-slate-700 dark:text-slate-300 leading-loose mb-6 tracking-wide">
                             An aspiring Software Developer with hands-on experience in both front-end and back-end technologies.
                             Strong command in C, Java, and Python, along with proficiency in HTML, CSS, JavaScript, and React.
                         </p>
-                        <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <p className="text-lg text-slate-700 dark:text-slate-300 leading-loose tracking-wide">
                             Seeking an internship opportunity to apply and enhance my skills while gaining relevant industry experience.
                         </p>
                     </motion.div>
@@ -36,19 +34,20 @@ const About = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {[
                             {
-                                icon: <Code size={32} />,
                                 title: "Full Stack Dev",
                                 desc: "Java, Spring Boot, React.js"
                             },
                             {
-                                icon: <Brain size={32} />,
                                 title: "AI & ML",
                                 desc: "Python, Data Analysis"
                             },
                             {
-                                icon: <Rocket size={32} />,
                                 title: "Data Visualization",
                                 desc: "Tableau, R Language"
+                            },
+                            {
+                                title: "MERN Stack Dev",
+                                desc: "MongoDB, Express, React, Node.js"
                             }
                         ].map((item, index) => (
                             <motion.div
@@ -57,10 +56,10 @@ const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                                className="p-6 bg-slate-50 dark:bg-slate-700 rounded-xl hover:shadow-lg transition-shadow"
+                                whileHover={{ scale: 1.05, y: -8 }}
+                                className="p-6 bg-slate-50 dark:bg-slate-700 rounded-xl shadow-sm hover:shadow-2xl border border-slate-100 dark:border-slate-600 cursor-pointer group"
                             >
-                                <div className="text-orange-600 dark:text-orange-400 mb-4">{item.icon}</div>
-                                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">{item.title}</h3>
+                                <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">{item.title}</h3>
                                 <p className="text-slate-600 dark:text-slate-300">{item.desc}</p>
                             </motion.div>
                         ))}

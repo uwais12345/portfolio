@@ -1,35 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
 
 const projectsData = [
     {
-        category: "Data Viz",
-        title: "Netflix Shows Dashboard",
-        description: "Developed an interactive Netflix Shows Dashboard using Tableau, enhancing data visualization and viewer insights.",
-        tech: ["Tableau", "Data Visualization", "Data Analysis"],
-        github: "https://github.com/uwais12345/NetflixDashboard-Using-Tableau",
+        category: "Full Stack AI",
+        title: "TenderGuard – AI Fraud Detection",
+        description: "Developed a web app using React and FastAPI to analyze public tender documents and identify fraud using AI. Built REST APIs and integrated BERT-based NLP models; leveraged Gemini API for intelligent explanations.",
+        tech: ["React.js", "Python", "FastAPI", "BERT", "Gemini API", "MySQL"],
+        github: "#",
         live: "#"
     },
     {
-        category: "Java",
-        title: "Multiple File Uploading System",
-        description: "Developed a secure multi-file upload system using Java sockets with real-time updates and integrated analytics.",
-        tech: ["Java", "Sockets", "Real-time Updates"],
-        github: "https://github.com/uwais12345/MultipleFileuploadingSystem-in-CN-Project",
+        category: "MERN Stack AI",
+        title: "AI Code Reviewer",
+        description: "Built an AI-powered code review application using MERN stack that automatically reviews GitHub Pull Requests in real time with Groq AI (Llama 3.3). Developed interactive dashboard with Tailwind CSS.",
+        tech: ["React.js", "Node.js", "Express", "MongoDB", "GitHub API", "Groq AI"],
+        github: "#",
         live: "#"
     },
     {
-        category: "R",
+        category: "Data Analysis",
         title: "HR Management Analysis",
-        description: "Performed HR Management Analysis using R to provide insights into employee metrics.",
-        tech: ["R Language", "Data Analysis", "Statistics"],
+        description: "Analyzed 1,400+ employee records in R; identified top 3 attrition drivers and delivered visual reports to support HR decision-making.",
+        tech: ["R", "ggplot2", "dplyr", "Statistical Analysis"],
         github: "https://github.com/uwais12345/HR-Management-Analysis-Using-R",
         live: "#"
     }
 ];
 
 const Projects = () => {
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
     return (
         <section id="projects" className="py-20 bg-white dark:bg-slate-800 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,8 +54,15 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -10 }}
-                            className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-slate-100 dark:border-slate-700 flex flex-col"
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                            className={`bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 transition-all duration-500 ease-out flex flex-col cursor-pointer border-l-4 ${
+                                hoveredIndex === index 
+                                    ? 'scale-105 opacity-100 border-orange-600 shadow-2xl z-10' 
+                                    : hoveredIndex !== null 
+                                        ? 'scale-95 opacity-50 border-transparent shadow-sm z-0' 
+                                        : 'scale-100 opacity-100 border-transparent shadow-lg z-0'
+                            }`}
                         >
                             <div className="flex justify-between items-start mb-6">
                                 <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase tracking-wider">

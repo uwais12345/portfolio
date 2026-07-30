@@ -11,16 +11,8 @@ const skillsData = [
         skills: ["HTML", "CSS", "JavaScript", "ReactJS"]
     },
     {
-        category: "Frameworks",
-        skills: ["Spring Boot"]
-    },
-    {
-        category: "Databases",
-        skills: ["SQL", "MySQL"]
-    },
-    {
-        category: "Tools",
-        skills: ["Tableau", "R"]
+        category: "Frameworks, Tools & DBs",
+        skills: ["Spring Boot", "Tableau", "R", "SQL", "MySQL", "MongoDB"]
     },
     {
         category: "Soft Skills",
@@ -67,7 +59,7 @@ const Skills = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-slate-100 dark:border-slate-700"
+                            className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-700 hover:-translate-y-2"
                         >
                             <h3 className="text-xl font-semibold text-orange-600 dark:text-orange-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2">
                                 {category.category}
@@ -76,7 +68,7 @@ const Skills = () => {
                                 {category.skills.map((skill, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium"
+                                        className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium transition-all duration-300 hover:scale-110 hover:bg-orange-100 hover:text-orange-600 dark:hover:bg-orange-900/50 dark:hover:text-orange-400 hover:shadow-sm cursor-default"
                                     >
                                         {skill}
                                     </span>
