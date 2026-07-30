@@ -148,6 +148,7 @@ ${formData.message}`;
                                     type="text"
                                     id="name"
                                     name="name"
+                                    autoComplete="name"
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
@@ -164,6 +165,7 @@ ${formData.message}`;
                                     type="email"
                                     id="email"
                                     name="email"
+                                    autoComplete="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
@@ -179,6 +181,7 @@ ${formData.message}`;
                                 <textarea
                                     id="message"
                                     name="message"
+                                    autoComplete="off"
                                     value={formData.message}
                                     onChange={handleChange}
                                     required

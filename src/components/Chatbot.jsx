@@ -128,6 +128,7 @@ const Chatbot = () => {
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
+                                autoComplete="off"
                                 placeholder="Ask about skills, projects..."
                                 className="flex-1 bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white text-sm rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-orange-600/50 transition-shadow"
                             />

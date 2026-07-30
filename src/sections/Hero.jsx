@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Copy, Check, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, Copy, Check } from 'lucide-react';
 import profileImg from '../assets/profile.png';
 
 const Hero = () => {
@@ -20,8 +20,10 @@ const Hero = () => {
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-amber-300 dark:bg-amber-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-4000 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                    <div className="md:w-1/2 space-y-8 text-center md:text-left">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+                    
+                    {/* Left/Main Column: Text Details, Mobile Profile Image, Quote, CTAs */}
+                    <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -36,61 +38,88 @@ const Hero = () => {
                                 Available for Full-Time / Internship Roles
                             </div>
 
-                            <h2 className="text-xl md:text-2xl font-medium text-orange-600 dark:text-orange-400 mb-2">
-                                Hello, I'm
-                            </h2>
-                            <h1 className="text-3xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-rose-600 dark:from-orange-400 dark:to-rose-400 animate-text-gradient">
+                            {/* 1. Location Header Tag (TOP ON MOBILE) */}
+                            <div className="text-xs font-extrabold text-orange-600 dark:text-orange-400 uppercase tracking-[0.25em] mb-2">
+                                PORTFOLIO &bull; TIRUNELVELI, TAMIL NADU, INDIA
+                            </div>
+
+                            {/* 2. Main Heading Name */}
+                            <h1 className="text-2xl sm:text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight mb-2 text-slate-900 dark:text-white whitespace-nowrap">
                                 Mohamed Uwais M N
                             </h1>
-                            <h3 className="text-2xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
-                                Aspiring Software Developer
-                            </h3>
+
+                            {/* 3. Role Sub-heading */}
+                            <h2 className="text-sm sm:text-base font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                                Full-Stack Software Engineer
+                            </h2>
                         </motion.div>
 
-                        <motion.p
+                        {/* 4. Profile Picture (VISIBLE HERE ON MOBILE, HIDDEN ON DESKTOP) */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.85 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            className="block md:hidden my-6 flex justify-center"
+                        >
+                            <div className="p-1.5 bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 rounded-full shadow-2xl animate-float inline-block">
+                                <div className="p-1.5 bg-slate-50 dark:bg-slate-900 rounded-full">
+                                    <div className="w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden border-2 border-white/40 dark:border-slate-800/40 relative">
+                                        <img
+                                            src={profileImg}
+                                            alt="Mohamed Uwais M N"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* 5. Executive Quote Block */}
+                        <motion.blockquote
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-lg text-slate-600 dark:text-slate-300 max-w-lg mx-auto md:mx-0"
+                            className="border-l-4 border-orange-500 pl-6 py-2 my-6 text-base sm:text-lg italic text-slate-700 dark:text-slate-300 leading-relaxed font-serif bg-slate-200/40 dark:bg-slate-800/40 rounded-r-2xl max-w-xl mx-auto md:mx-0 text-left"
                         >
-                            Aspiring Software Developer with hands-on experience in both front-end and back-end technologies.
-                            Seeking an internship opportunity to apply and enhance my skills while gaining relevant industry experience.
-                        </motion.p>
+                            "Full-stack software developer with hands-on experience in Java, Spring Boot, React.js, Node.js, and MySQL. 
+                            Driven by solving complex problems, building secure APIs, and shipping production tools."
+                        </motion.blockquote>
 
+                        {/* 6. CTAs */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
-                            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center"
+                            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center pt-2"
                         >
                             <a
                                 href="#contact"
-                                className="px-8 py-3 rounded-full bg-orange-600 text-white font-medium hover:bg-orange-700 transition-colors flex items-center justify-center gap-2 w-full sm:w-auto"
+                                className="px-8 py-3.5 rounded-full bg-orange-600 text-white font-semibold hover:bg-orange-700 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
                             >
-                                Contact Me <ArrowRight size={20} />
+                                Contact Me <ArrowRight size={18} />
                             </a>
                             <a
                                 href="/uwaisresume.pdf"
                                 download
-                                className="px-8 py-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-colors flex items-center justify-center gap-2 w-full sm:w-auto"
+                                className="px-8 py-3.5 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
                             >
-                                Download Resume <Download size={20} />
+                                Download Resume <Download size={18} />
                             </a>
                             <button
                                 onClick={copyEmail}
-                                className="p-3 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-colors flex items-center justify-center relative"
+                                className="p-3.5 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-orange-600 hover:text-orange-600 dark:hover:border-orange-400 dark:hover:text-orange-400 transition-all duration-300 flex items-center justify-center relative"
                                 title="Copy Email to Clipboard"
                             >
-                                {copied ? <Check size={20} className="text-emerald-500" /> : <Copy size={20} />}
+                                {copied ? <Check size={18} className="text-emerald-500" /> : <Copy size={18} />}
                                 {copied && (
-                                    <span className="absolute -top-9 left-1/2 transform -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs px-2 py-1 rounded shadow text-nowrap">
+                                    <span className="absolute -top-9 left-1/2 transform -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs px-2.5 py-1 rounded shadow text-nowrap font-medium">
                                         Email Copied!
                                     </span>
                                 )}
                             </button>
                         </motion.div>
 
-                        {/* Recruiter Impact Metrics Bar */}
+                        {/* 7. Recruiter Impact Metrics Bar */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -98,38 +127,44 @@ const Hero = () => {
                             className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800"
                         >
                             <div>
-                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">15+</h4>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">Bugs Resolved</p>
+                                <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">15+</h4>
+                                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Bugs Resolved</p>
                             </div>
                             <div>
-                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">1.4k+</h4>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">Records Analyzed</p>
+                                <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">1.4k+</h4>
+                                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Records Analyzed</p>
                             </div>
                             <div>
-                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">8.04</h4>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">CGPA (CSBS)</p>
+                                <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">8.04</h4>
+                                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">CGPA (CSBS)</p>
                             </div>
                             <div>
-                                <h4 className="text-2xl font-bold text-slate-900 dark:text-white">3+</h4>
-                                <p className="text-xs text-slate-500 dark:text-slate-400">AI & MERN Apps</p>
+                                <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">3+</h4>
+                                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">AI & MERN Apps</p>
                             </div>
                         </motion.div>
                     </div>
 
+                    {/* Right Column: Profile Picture (HIDDEN ON MOBILE, VISIBLE ON DESKTOP) */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.85 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="md:w-1/2 mt-12 md:mt-0 flex justify-center animate-float"
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="hidden md:flex md:w-1/2 justify-center items-center"
                     >
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
-                            <img
-                                src={profileImg}
-                                alt="Mohamed Uwais M N"
-                                className="w-full h-full object-cover"
-                            />
+                        <div className="p-1.5 bg-gradient-to-tr from-orange-500 via-rose-500 to-amber-500 rounded-full shadow-2xl animate-float">
+                            <div className="p-1.5 bg-slate-50 dark:bg-slate-900 rounded-full">
+                                <div className="w-80 h-80 rounded-full overflow-hidden border-2 border-white/40 dark:border-slate-800/40 relative">
+                                    <img
+                                        src={profileImg}
+                                        alt="Mohamed Uwais M N"
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
+
                 </div>
             </div>
         </section>
