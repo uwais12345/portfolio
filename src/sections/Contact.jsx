@@ -2,6 +2,29 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
+const fadeInVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { 
+            duration: 0.6, 
+            ease: [0.22, 1, 0.36, 1] 
+        }
+    }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.1
+        }
+    }
+};
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -43,33 +66,37 @@ ${formData.message}`;
     };
 
     return (
-        <section id="contact" className="py-20 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <section id="contact" className="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                {/* Header Fade In */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Get In Touch</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Get In Touch</h2>
                     <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
                 </motion.div>
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
+                {/* Staggered Fade In Grid */}
+                <motion.div 
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.15 }}
+                    className="grid md:grid-cols-2 gap-12"
+                >
+                    {/* Left Column: Contact Details Fade In */}
+                    <motion.div variants={fadeInVariants}>
                         <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Let's Talk</h3>
-                        <p className="text-lg text-slate-600 dark:text-slate-300 mb-8">
+                        <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
                             I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
                         </p>
 
                         <div className="space-y-6">
-                            <div className="flex items-start gap-4">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
                                 <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
                                     <MapPin size={24} />
                                 </div>
@@ -79,9 +106,9 @@ ${formData.message}`;
                                         33A1, Mothai Meera Pillai Street,<br />Melapalayam, Tirunelveli, Tamil Nadu, India
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className="flex items-start gap-4">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
                                 <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
                                     <Mail size={24} />
                                 </div>
@@ -91,28 +118,26 @@ ${formData.message}`;
                                         uwaismohamed208@gmail.com
                                     </a>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className="flex items-start gap-4">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
                                 <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
                                     <Phone size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Phone</h4>
-                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
                                         +91 8056793899
                                     </a>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </motion.div>
 
+                    {/* Right Column: Contact Form Fade In */}
                     <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="bg-slate-50 dark:bg-slate-700 p-8 rounded-2xl shadow-lg"
+                        variants={fadeInVariants}
+                        className="bg-slate-50 dark:bg-slate-700/60 p-8 rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-600/60"
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
@@ -177,7 +202,7 @@ ${formData.message}`;
                             )}
                         </form>
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

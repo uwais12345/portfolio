@@ -44,18 +44,18 @@ const Chatbot = () => {
         return "I'm a simple bot! 🤖 Try asking about Uwais's 'skills', 'projects', 'experience', or 'contact' info.";
     };
 
-    const handleSend = (e) => {
-        e.preventDefault();
-        if (!input.trim()) return;
+    const handleSend = (e, customText) => {
+        if (e) e.preventDefault();
+        const textToSend = customText || input;
+        if (!textToSend.trim()) return;
 
         // Add user message
-        const userMsg = input.trim();
-        setMessages(prev => [...prev, { text: userMsg, isBot: false }]);
-        setInput("");
+        setMessages(prev => [...prev, { text: textToSend.trim(), isBot: false }]);
+        if (!customText) setInput("");
 
         // Simulate typing delay
         setTimeout(() => {
-            const botResponse = getBotResponse(userMsg);
+            const botResponse = getBotResponse(textToSend);
             setMessages(prev => [...prev, { text: botResponse, isBot: true }]);
         }, 600);
     };
@@ -106,6 +106,20 @@ const Chatbot = () => {
                                 </div>
                             ))}
                             <div ref={messagesEndRef} />
+                        </div>
+
+                        {/* Recruiter Quick Suggestion Chips */}
+                        <div className="px-3 py-2 bg-slate-100/50 dark:bg-slate-900/30 border-t border-slate-100 dark:border-slate-700 flex gap-1.5 overflow-x-auto text-nowrap scrollbar-none">
+                            {["Skills", "Projects", "Experience", "Contact"].map((chip) => (
+                                <button
+                                    key={chip}
+                                    type="button"
+                                    onClick={() => handleSend(null, chip)}
+                                    className="px-2.5 py-1 text-xs rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 border border-slate-200 dark:border-slate-700 shadow-xs transition-colors"
+                                >
+                                    {chip}
+                                </button>
+                            ))}
                         </div>
 
                         {/* Input Area */}
