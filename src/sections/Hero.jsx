@@ -40,7 +40,7 @@ const Hero = () => {
 
                             {/* 1. Location Header Tag (TOP ON MOBILE) */}
                             <div className="text-xs font-extrabold text-orange-600 dark:text-orange-400 uppercase tracking-[0.25em] mb-2">
-                                PORTFOLIO &bull; TIRUNELVELI, TAMIL NADU, INDIA
+                                TIRUNELVELI, TAMIL NADU, INDIA
                             </div>
 
                             {/* 2. Main Heading Name */}

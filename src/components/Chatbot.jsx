@@ -149,18 +149,17 @@ const Chatbot = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className={`flex items-center gap-2 px-1 py-1 rounded-full shadow-2xl transition-colors duration-300 ${
+                className={`flex items-center gap-2 p-1 rounded-full shadow-2xl transition-colors duration-300 ${
                     isOpen ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-orange-600 text-white hover:bg-orange-700'
                 }`}
+                aria-label={isOpen ? "Close Assistant" : "Open Assistant"}
             >
                 {!isOpen && (
-                    <span className="pl-4 font-medium text-sm hidden sm:block">Hey there! ...</span>
+                    <span className="pl-3 font-medium text-sm hidden sm:block">Hey there! ...</span>
                 )}
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 bg-white">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/30 bg-slate-900 flex items-center justify-center">
                     {isOpen ? (
-                        <div className="w-full h-full flex items-center justify-center text-white">
-                            <X size={24} />
-                        </div>
+                        <X size={24} className="text-white" />
                     ) : (
                         <img src={profileImg} alt="Avatar" className="w-full h-full object-cover" />
                     )}

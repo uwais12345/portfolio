@@ -16,7 +16,7 @@ const projectsData = [
             "FastAPI backend with secure RESTful endpoints & MySQL storage"
         ],
         tech: ["React.js", "Python", "FastAPI", "BERT", "Gemini API", "MySQL"],
-        github: "https://github.com/uwais12345",
+        github: "https://github.com/uwais12345/TenderGuard",
         live: "#"
     },
     {
@@ -32,7 +32,7 @@ const projectsData = [
             "Interactive Tailwind CSS dashboard displaying repo metrics & code insights"
         ],
         tech: ["React.js", "Node.js", "Express.js", "MongoDB", "GitHub API", "Groq AI"],
-        github: "https://github.com/uwais12345",
+        github: "https://github.com/uwais12345/AI-Reviewer",
         live: "#"
     },
     {
@@ -117,9 +117,23 @@ const Projects = () => {
                                     <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase tracking-wider">
                                         {project.category}
                                     </span>
-                                    <span className="text-xs text-orange-600 dark:text-orange-400 font-semibold group-hover:underline flex items-center gap-1">
-                                        Details <ExternalLink size={14} />
-                                    </span>
+                                    <div className="flex items-center gap-3">
+                                        {project.github && (
+                                            <a
+                                                href={project.github}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                onClick={(e) => e.stopPropagation()}
+                                                className="p-1 rounded-full text-slate-500 hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400 transition-colors"
+                                                title="View Source Code on GitHub"
+                                            >
+                                                <Github size={18} />
+                                            </a>
+                                        )}
+                                        <span className="text-xs text-orange-600 dark:text-orange-400 font-semibold group-hover:underline flex items-center gap-1">
+                                            Details <ExternalLink size={14} />
+                                        </span>
+                                    </div>
                                 </div>
 
                                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
