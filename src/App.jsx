@@ -29,8 +29,23 @@ function App() {
 
     requestAnimationFrame(raf);
 
+    // Prevent right-click context menu and copy/cut site-wide
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+    const handleCopy = (e) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('cut', handleCopy);
+
     return () => {
       lenis.destroy();
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('cut', handleCopy);
     };
   }, []);
 
@@ -40,8 +55,8 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Experience />
         <Contact />
       </main>
