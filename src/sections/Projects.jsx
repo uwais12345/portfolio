@@ -65,28 +65,28 @@ const Projects = () => {
         : projectsData.filter(p => p.filterGroup === activeFilter);
 
     return (
-        <section id="projects" className="py-20 bg-white dark:bg-slate-800 transition-colors duration-300 relative">
+        <section id="projects" className="py-16 sm:py-20 bg-white dark:bg-slate-900 transition-colors duration-300 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-12"
+                    className="text-center mb-10"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Featured Projects</h2>
-                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full mb-8"></div>
+                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
 
                     {/* Filter Tabs */}
-                    <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto p-1 bg-slate-100 dark:bg-slate-700/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                    <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto p-1 bg-slate-100 dark:bg-slate-950/60 rounded-xl border border-slate-200 dark:border-slate-800">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveFilter(cat)}
                                 className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg transition-all duration-300 ${
                                     activeFilter === cat
-                                        ? 'bg-orange-600 text-white shadow-md'
-                                        : 'text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400'
+                                        ? 'bg-blue-600 text-white shadow-md'
+                                        : 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
                                 }`}
                             >
                                 {cat}
@@ -111,10 +111,10 @@ const Projects = () => {
                                 transition={{ duration: 0.3 }}
                                 whileHover={{ y: -10, scale: 1.03, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                                 onClick={() => setSelectedProject(project)}
-                                className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 flex flex-col cursor-pointer border border-slate-200 dark:border-slate-700 hover:border-orange-500 hover:shadow-2xl relative overflow-hidden group transition-colors duration-300"
+                                className="bg-slate-50 dark:bg-slate-950/60 rounded-2xl p-8 flex flex-col cursor-pointer border border-slate-200 dark:border-slate-800 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/10 relative overflow-hidden group transition-colors duration-300"
                             >
                                 <div className="flex justify-between items-start mb-6">
-                                    <span className="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase tracking-wider">
+                                    <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full uppercase tracking-wider">
                                         {project.category}
                                     </span>
                                     <div className="flex items-center gap-3">
@@ -124,19 +124,19 @@ const Projects = () => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 onClick={(e) => e.stopPropagation()}
-                                                className="p-1 rounded-full text-slate-500 hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400 transition-colors"
+                                                className="p-1 rounded-full text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors"
                                                 title="View Source Code on GitHub"
                                             >
                                                 <Github size={18} />
                                             </a>
                                         )}
-                                        <span className="text-xs text-orange-600 dark:text-orange-400 font-semibold group-hover:underline flex items-center gap-1">
+                                        <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold group-hover:underline flex items-center gap-1">
                                             Details <ExternalLink size={14} />
                                         </span>
                                     </div>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                                     {project.title}
                                 </h3>
 
@@ -148,7 +148,7 @@ const Projects = () => {
                                     {project.tech.map((tech, idx) => (
                                         <span
                                             key={idx}
-                                            className="px-3 py-1 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded-md font-medium"
+                                            className="px-3 py-1 bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs rounded-md font-medium"
                                         >
                                             {tech}
                                         </span>
@@ -163,12 +163,12 @@ const Projects = () => {
             {/* Recruiter Deep-Dive Project Modal */}
             <AnimatePresence>
                 {selectedProject && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-700 relative max-h-[90vh] overflow-y-auto"
+                            className="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 dark:border-slate-800 relative max-h-[90vh] overflow-y-auto"
                         >
                             <button
                                 onClick={() => setSelectedProject(null)}
@@ -177,7 +177,7 @@ const Projects = () => {
                                 <X size={24} />
                             </button>
 
-                            <div className="inline-block px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase tracking-wider mb-4">
+                            <div className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full uppercase tracking-wider mb-4">
                                 {selectedProject.category}
                             </div>
 
@@ -189,9 +189,9 @@ const Projects = () => {
                                 {selectedProject.fullDesc}
                             </p>
 
-                            <div className="mb-6 bg-slate-50 dark:bg-slate-900 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
+                            <div className="mb-6 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
                                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                                    <Sparkles size={16} className="text-orange-500" /> Key Architecture Highlights
+                                    <Sparkles size={16} className="text-blue-500" /> Key Architecture Highlights
                                 </h4>
                                 <ul className="space-y-2">
                                     {selectedProject.highlights.map((highlight, i) => (
@@ -205,11 +205,11 @@ const Projects = () => {
 
                             <div className="mb-8">
                                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                                    <Layers size={16} className="text-orange-500" /> Technologies Used
+                                    <Layers size={16} className="text-blue-500" /> Technologies Used
                                 </h4>
                                 <div className="flex flex-wrap gap-2">
                                     {selectedProject.tech.map((t, idx) => (
-                                        <span key={idx} className="px-3 py-1 bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs rounded-full font-semibold border border-orange-500/20">
+                                        <span key={idx} className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs rounded-full font-semibold border border-blue-500/20">
                                             {t}
                                         </span>
                                     ))}
@@ -221,7 +221,7 @@ const Projects = () => {
                                     href={selectedProject.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 py-3 px-6 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-medium text-center transition-colors flex items-center justify-center gap-2"
+                                    className="flex-1 py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-center transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-blue-500/20"
                                 >
                                     <Github size={20} /> View Source Code
                                 </a>

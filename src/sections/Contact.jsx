@@ -66,7 +66,7 @@ ${formData.message}`;
     };
 
     return (
-        <section id="contact" className="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <section id="contact" className="py-16 sm:py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Fade In */}
                 <motion.div
@@ -74,10 +74,10 @@ ${formData.message}`;
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Get In Touch</h2>
-                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 {/* Staggered Fade In Grid */}
@@ -96,8 +96,8 @@ ${formData.message}`;
                         </p>
 
                         <div className="space-y-6">
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <MapPin size={24} />
                                 </div>
                                 <div>
@@ -108,25 +108,25 @@ ${formData.message}`;
                                 </div>
                             </motion.div>
 
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <Mail size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Email</h4>
-                                    <a href="mailto:uwaismohamed208@gmail.com" className="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                                    <a href="mailto:uwaismohamed208@gmail.com" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         uwaismohamed208@gmail.com
                                     </a>
                                 </div>
                             </motion.div>
 
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <Phone size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Phone</h4>
-                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         +91 8056793899
                                     </a>
                                 </div>
@@ -137,7 +137,7 @@ ${formData.message}`;
                     {/* Right Column: Contact Form Fade In */}
                     <motion.div
                         variants={fadeInVariants}
-                        className="bg-slate-50 dark:bg-slate-700/60 p-8 rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-600/60"
+                        className="bg-slate-50 dark:bg-slate-950/60 p-8 rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-800/80"
                     >
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
@@ -152,7 +152,7 @@ ${formData.message}`;
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                                     placeholder="John Doe"
                                 />
                             </div>
@@ -169,7 +169,7 @@ ${formData.message}`;
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all"
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                                     placeholder="john@example.com"
                                 />
                             </div>
@@ -186,20 +186,20 @@ ${formData.message}`;
                                     onChange={handleChange}
                                     required
                                     rows="4"
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all resize-none shadow-sm"
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none shadow-sm"
                                     placeholder="Your message here..."
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full py-3 px-6 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2"
+                                className="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg hover:shadow-blue-500/20 flex items-center justify-center gap-2 text-sm sm:text-base"
                             >
-                                Send Message on WhatsApp <Send size={20} />
+                                Send Message on WhatsApp <Send size={18} />
                             </button>
 
                             {status === 'success' && (
-                                <p className="text-green-600 dark:text-green-400 text-center text-sm mt-2">
+                                <p className="text-emerald-600 dark:text-emerald-400 text-center text-sm mt-2 font-medium">
                                     Opening WhatsApp...
                                 </p>
                             )}

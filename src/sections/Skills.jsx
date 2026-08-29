@@ -12,7 +12,7 @@ const skillsData = [
     },
     {
         category: "Frameworks, Tools & DBs",
-        skills: ["Spring Boot", "Tableau", "R", "SQL", "MySQL", "MongoDB"]
+        skills: ["Spring Boot", "Docker", "Git", "GitHub", "MongoDB", "SQL", "MySQL", "Tableau", "R"]
     },
     {
         category: "Soft Skills",
@@ -29,10 +29,6 @@ const skillsData = [
             "NPTEL - Cloud Computing",
             "Udemy - Java Scratch Fundamentals"
         ]
-    },
-    {
-        category: "Languages Known",
-        skills: ["English", "Tamil"]
     }
 ];
 
@@ -52,8 +48,8 @@ const cardVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { 
-            duration: 0.6, 
+        transition: {
+            duration: 0.6,
             ease: [0.22, 1, 0.36, 1]
         }
     }
@@ -82,21 +78,21 @@ const badgeVariants = {
 
 const Skills = () => {
     return (
-        <section id="skills" className="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+        <section id="skills" className="py-16 sm:py-20 bg-white dark:bg-slate-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Technical Skills & Certifications</h2>
-                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 {/* Stagger Grid Container */}
-                <motion.div 
+                <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -108,14 +104,14 @@ const Skills = () => {
                             key={index}
                             variants={cardVariants}
                             whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                            className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/60 dark:border-slate-700/60"
+                            className="bg-slate-50 dark:bg-slate-950/60 p-6 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 border border-slate-200/60 dark:border-slate-800/80"
                         >
-                            <h3 className="text-xl font-bold text-orange-600 dark:text-orange-400 mb-4 border-b border-slate-100 dark:border-slate-700 pb-3">
+                            <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4 border-b border-slate-200 dark:border-slate-800 pb-3">
                                 {category.category}
                             </h3>
 
                             {/* Nested Stagger for Skill Badges */}
-                            <motion.div 
+                            <motion.div
                                 variants={badgeContainerVariants}
                                 className="flex flex-wrap gap-2"
                             >
@@ -124,7 +120,7 @@ const Skills = () => {
                                         key={idx}
                                         variants={badgeVariants}
                                         whileHover={{ scale: 1.08 }}
-                                        className="px-3 py-1 bg-slate-100 dark:bg-slate-700/70 text-slate-700 dark:text-slate-300 rounded-full text-xs font-semibold transition-colors duration-200 hover:bg-orange-500/15 hover:text-orange-600 dark:hover:text-orange-400 hover:shadow-xs cursor-default"
+                                        className="px-3 py-1 bg-slate-200/60 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 rounded-full text-xs font-semibold transition-colors duration-200 hover:bg-blue-500/15 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-xs cursor-default"
                                     >
                                         {skill}
                                     </motion.span>
