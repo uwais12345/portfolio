@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
+import { MotionConfig } from 'framer-motion';
 import 'lenis/dist/lenis.css';
 
 import Navbar from './components/Navbar';
@@ -14,45 +15,40 @@ import Chatbot from './components/Chatbot';
 
 function App() {
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: prefersReducedMotion ? 0 : 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
+      smoothWheel: !prefersReducedMotion,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
 
+    let animationFrameId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
-
-    // Prevent right-click context menu and copy/cut site-wide
-    const handleContextMenu = (e) => {
-      e.preventDefault();
-    };
-    const handleCopy = (e) => {
-      e.preventDefault();
-    };
-
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('copy', handleCopy);
-    document.addEventListener('cut', handleCopy);
+    animationFrameId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('copy', handleCopy);
-      document.removeEventListener('cut', handleCopy);
     };
   }, []);
 
   return (
-    <div className="bg-white dark:bg-slate-900 min-h-screen transition-colors duration-300">
+    <MotionConfig reducedMotion="user">
+      <div className="bg-white dark:bg-slate-900 min-h-screen transition-colors duration-300">
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[60] -translate-y-20 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Projects />
@@ -62,7 +58,8 @@ function App() {
       </main>
       <Footer />
       <Chatbot />
-    </div>
+      </div>
+    </MotionConfig>
   );
 }
 
