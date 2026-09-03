@@ -22,18 +22,14 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            {/* Open to Work Badge */}
-                            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[11px] font-semibold mb-3">
+                            <div className="mb-3 flex flex-wrap items-center justify-center gap-2 md:justify-start">
+                                <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
                                 <span className="relative flex h-1.5 w-1.5">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
                                 </span>
                                 Available for Full-Time / Internship Roles
-                            </div>
-
-                            {/* 1. Location Header Tag (TOP ON MOBILE) */}
-                            <div className="text-xs font-extrabold text-blue-600 dark:text-blue-400 uppercase tracking-[0.25em] mb-2">
-                                INDIA
+                                </div>
                             </div>
 
                             {/* 2. Main Heading Name */}
@@ -67,15 +63,14 @@ const Hero = () => {
                             </div>
                         </motion.div>
 
-                        {/* 5. Executive Quote Block */}
+                        {/* 5. Recruiter Value Proposition */}
                         <motion.blockquote
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="border-l-4 border-blue-600 pl-6 py-2 my-6 text-base sm:text-lg italic text-slate-700 dark:text-slate-300 leading-relaxed font-serif bg-slate-200/40 dark:bg-slate-900/60 rounded-r-2xl max-w-xl mx-auto md:mx-0 text-left"
+                            className="my-6 max-w-xl rounded-r-2xl border-l-4 border-blue-600 bg-slate-200/40 py-3 pl-6 text-left text-base leading-relaxed text-slate-700 dark:bg-slate-900/60 dark:text-slate-300 sm:text-lg"
                         >
-                            "Full-stack software developer with hands-on experience in React.js, Node.js, and MongoDB.
-                            Driven by solving complex problems, building secure APIs, and shipping production tools."
+                            I build dependable full-stack products and AI-powered tools with React, Node.js, Java, and Python, turning complex requirements into clear, useful experiences.
                         </motion.blockquote>
 
                         {/* 6. CTAs */}
@@ -83,20 +78,26 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.4 }}
-                            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start items-center pt-2"
+                            className="flex flex-col items-center justify-center gap-3 pt-2 sm:flex-row sm:flex-wrap md:justify-start"
                         >
                             <a
                                 href="#contact"
-                                className="px-8 py-3.5 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-blue-500/20 hover:-translate-y-0.5 flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
+                                className="flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-500/20 sm:w-auto"
                             >
-                                Contact Me <ArrowRight size={18} />
+                                Let's Connect <ArrowRight size={18} />
+                            </a>
+                            <a
+                                href="#projects"
+                                className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-slate-300 px-7 py-3.5 text-sm font-semibold text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-600 hover:text-blue-600 dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-400 dark:hover:text-blue-400 sm:w-auto"
+                            >
+                                View Projects <ArrowRight size={18} />
                             </a>
                             <a
                                 href="/uwaisresume.pdf"
                                 download
-                                className="px-8 py-3.5 rounded-full border-2 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 flex items-center justify-center gap-2 w-full sm:w-auto text-sm"
+                                className="flex w-full items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 sm:w-auto"
                             >
-                                Download Resume <Download size={18} />
+                                Resume <Download size={17} />
                             </a>
                         </motion.div>
 

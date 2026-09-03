@@ -3,6 +3,14 @@ import { Github, Linkedin, Mail, Phone, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
+    const footerLinks = [
+        { name: 'Home', href: '#home' },
+        { name: 'About', href: '#about' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Skills', href: '#skills' },
+        { name: 'Contact', href: '#contact' }
+    ];
+
     const scrollToTop = () => {
         const homeElement = document.getElementById('home');
         if (homeElement) {
@@ -23,14 +31,24 @@ const Footer = () => {
                         <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
                             Full-Stack Software Engineer & AI Specialist
                         </p>
+                        <p className="mt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">Available for opportunities</p>
                     </div>
 
+                    <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {footerLinks.map((link) => (
+                            <a key={link.name} href={link.href} className="transition-colors hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:text-blue-400">
+                                {link.name}
+                            </a>
+                        ))}
+                    </nav>
+
                     {/* Social Links */}
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-3" aria-label="Social and contact links">
                         <a
                             href="https://github.com/uwais12345"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="GitHub Profile"
                             className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="GitHub Profile"
                         >
@@ -40,6 +58,7 @@ const Footer = () => {
                             href="https://www.linkedin.com/in/mohamed-uwais-m-n/"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="LinkedIn Profile"
                             className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="LinkedIn Profile"
                         >
@@ -49,6 +68,7 @@ const Footer = () => {
                             href="https://leetcode.com/u/MOHAMED_UWAIS_MN/"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="LeetCode Profile"
                             className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs flex items-center justify-center"
                             title="LeetCode Profile"
                         >
@@ -58,6 +78,7 @@ const Footer = () => {
                         </a>
                         <a
                             href="mailto:uwaismohamed208@gmail.com"
+                            aria-label="Send Email"
                             className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="Send Email"
                         >
@@ -65,6 +86,7 @@ const Footer = () => {
                         </a>
                         <a
                             href="tel:+918056793899"
+                            aria-label="Call Phone"
                             className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="Call Phone"
                         >
@@ -76,6 +98,7 @@ const Footer = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={scrollToTop}
+                            aria-label="Back to top"
                             className="p-2.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-md hover:shadow-blue-500/20 ml-2"
                             title="Back to Top"
                         >

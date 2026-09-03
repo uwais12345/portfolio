@@ -75,7 +75,7 @@ const About = () => {
     };
 
     return (
-        <section id="about" className="py-16 sm:py-20 bg-white dark:bg-slate-900 transition-colors duration-300 relative overflow-hidden">
+        <section id="about" className="py-12 sm:py-16 bg-white dark:bg-slate-900 transition-colors duration-300 relative overflow-hidden">
             {/* Subtle Ambient Background Light */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -86,26 +86,26 @@ const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-10"
+                    className="text-center mb-8"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">About Me</h2>
                     <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 {/* Main Content Layout with Scroll Reveal */}
-                <div className="grid lg:grid-cols-12 gap-12 items-start">
+                <div className="grid lg:grid-cols-12 gap-8 items-start">
                     {/* Left Column: Biography & Quick Facts (7 cols) */}
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.2 }}
                         variants={containerVariants}
-                        className="lg:col-span-7 space-y-8"
+                        className="lg:col-span-7 space-y-6"
                     >
                         {/* Bio Card with Direct CV Action */}
                         <motion.div
                             variants={slideLeftVariant}
-                            className="p-8 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border-l-4 border-blue-600 border-t border-r border-b border-slate-200/60 dark:border-slate-800/80 shadow-sm relative group"
+                            className="p-6 sm:p-7 bg-slate-50 dark:bg-slate-950/60 rounded-2xl border-l-4 border-blue-600 border-t border-r border-b border-slate-200/60 dark:border-slate-800/80 shadow-sm relative group"
                         >
                             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
                                 Passionate Software Engineer & Problem Solver
