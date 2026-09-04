@@ -1,22 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 import profileImg from '../assets/profile.png';
 
+const ROLE_TITLES = [
+    'Software Developer',
+    'Junior Full-Stack Developer',
+    'MERN Stack Developer',
+    'AI Engineer',
+];
+
 const Hero = () => {
+    const [roleState, setRoleState] = useState({ index: 0, text: '', isDeleting: false });
+
+    useEffect(() => {
+        const currentRole = ROLE_TITLES[roleState.index];
+        const isRoleComplete = roleState.text === currentRole;
+        const isRoleEmpty = roleState.text.length === 0;
+        const delay = isRoleComplete ? 1600 : isRoleEmpty && roleState.isDeleting ? 350 : roleState.isDeleting ? 45 : 85;
+
+        const timer = setTimeout(() => {
+            setRoleState((currentState) => {
+                if (!currentState.isDeleting && currentState.text === ROLE_TITLES[currentState.index]) {
+                    return { ...currentState, isDeleting: true };
+                }
+
+                if (currentState.isDeleting && currentState.text.length === 0) {
+                    return {
+                        index: (currentState.index + 1) % ROLE_TITLES.length,
+                        text: '',
+                        isDeleting: false,
+                    };
+                }
+
+                return {
+                    ...currentState,
+                    text: currentState.isDeleting
+                        ? currentState.text.slice(0, -1)
+                        : ROLE_TITLES[currentState.index].slice(0, currentState.text.length + 1),
+                };
+            });
+        }, delay);
+
+        return () => clearTimeout(timer);
+    }, [roleState]);
 
     return (
-        <section id="home" className="min-h-screen flex items-center pt-20 pb-10 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden">
+        <section id="home" className="min-h-0 flex items-start pt-24 pb-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden">
             {/* Ambient Background Blobs */}
             <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-400 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-blob pointer-events-none"></div>
             <div className="absolute top-0 -right-4 w-72 h-72 bg-indigo-400 dark:bg-indigo-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000 pointer-events-none"></div>
             <div className="absolute -bottom-8 left-20 w-72 h-72 bg-cyan-400 dark:bg-cyan-600 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000 pointer-events-none"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-10">
+                <div className="flex flex-col items-center justify-between gap-6 md:flex-row sm:gap-8">
 
                     {/* Left/Main Column: Text Details, Mobile Profile Image, Quote, CTAs */}
-                    <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
+                    <div className="w-full space-y-4 text-center md:w-1/2 md:text-left">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -38,8 +78,9 @@ const Hero = () => {
                             </h1>
 
                             {/* 3. Role Sub-heading */}
-                            <h2 className="text-sm sm:text-base font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
-                                Software Developer
+                            <h2 className="min-h-10 text-2xl font-semibold tracking-tight text-blue-600 dark:bg-gradient-to-r dark:from-blue-400 dark:via-cyan-300 dark:to-blue-500 dark:bg-clip-text dark:text-transparent sm:text-3xl" aria-live="polite">
+                                {roleState.text}
+                                <span className="ml-1 inline-block h-7 w-0.5 animate-pulse bg-blue-600 align-[-0.08em] dark:bg-cyan-300 sm:h-8" aria-hidden="true" />
                             </h2>
                         </motion.div>
 
@@ -48,7 +89,7 @@ const Hero = () => {
                             initial={{ opacity: 0, scale: 0.85 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                            className="block md:hidden my-6 flex justify-center"
+                            className="block flex justify-center md:hidden"
                         >
                             <div className="p-1.5 bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-400 rounded-full shadow-2xl animate-float inline-block">
                                 <div className="p-1.5 bg-slate-50 dark:bg-slate-950 rounded-full">
@@ -68,7 +109,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="my-6 max-w-xl rounded-r-2xl border-l-4 border-blue-600 bg-slate-200/40 py-3 pl-6 text-left text-base leading-relaxed text-slate-700 dark:bg-slate-900/60 dark:text-slate-300 sm:text-lg"
+                            className="max-w-xl rounded-r-2xl border-l-4 border-blue-600 bg-slate-200/40 py-3 pl-6 text-left text-base leading-relaxed text-slate-700 dark:bg-slate-900/60 dark:text-slate-300 sm:text-lg"
                         >
                             I build dependable full-stack products and AI-powered tools with React, Node.js, Java, and Python, turning complex requirements into clear, useful experiences.
                         </motion.blockquote>
@@ -106,7 +147,7 @@ const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.5 }}
-                            className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-200 dark:border-slate-800"
+                            className="grid grid-cols-2 gap-4 border-t border-slate-200 pt-4 dark:border-slate-800 sm:grid-cols-4"
                         >
                             <div>
                                 <h4 className="text-2xl font-extrabold text-slate-900 dark:text-white">10+</h4>
