@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send } from 'lucide-react';
+import { X, Send, MessageCircle } from 'lucide-react';
 import profileImg from '../assets/profile.png';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isPromptVisible, setIsPromptVisible] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
@@ -47,9 +48,8 @@ const Chatbot = () => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setIsOpen(true);
-            typeBotMessage(welcomeMessage);
-        }, 800);
+            setIsPromptVisible(true);
+        }, 5000);
         return () => {
             clearTimeout(timer);
             clearTimeout(typingTimeoutRef.current);
@@ -117,9 +117,58 @@ const Chatbot = () => {
         typeBotMessage(getBotResponse(textToSend));
     };
 
+    const startChat = () => {
+        setIsPromptVisible(false);
+        setIsOpen(true);
+        if (messages.length === 0) typeBotMessage(welcomeMessage);
+    };
+
+    const handleToggle = () => {
+        if (isPromptVisible) {
+            startChat();
+            return;
+        }
+        setIsOpen(currentIsOpen => !currentIsOpen);
+    };
+
     return (
         <div className="fixed bottom-4 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end sm:bottom-6 sm:right-6">
             <AnimatePresence>
+                {isPromptVisible && !isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20, scale: 0.94 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.94 }}
+                        transition={{ duration: 0.3 }}
+                        className="mb-4 w-[calc(100vw-2rem)] rounded-2xl border border-blue-500/30 bg-slate-950/95 p-4 text-white shadow-2xl shadow-blue-950/40 backdrop-blur sm:w-[312px]"
+                    >
+                        <div className="mb-4 flex items-center justify-between">
+                            <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-cyan-400">
+                                <MessageCircle size={13} />
+                                Ask Uwais
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setIsPromptVisible(false)}
+                                className="rounded-full p-1 text-slate-500 transition-colors hover:bg-white/10 hover:text-white"
+                                aria-label="Dismiss recruiter chat prompt"
+                            >
+                                <X size={16} />
+                            </button>
+                        </div>
+                        <p className="mb-4 text-sm leading-6 text-slate-300">
+                            Hi! 👋 Ask me anything about Uwais&apos;s projects, experience, or skills.
+                        </p>
+                        <button
+                            type="button"
+                            onClick={startChat}
+                            className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all hover:-translate-y-0.5 hover:shadow-cyan-400/20"
+                        >
+                            <MessageCircle size={17} />
+                            Start a chat
+                        </button>
+                    </motion.div>
+                )}
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -219,7 +268,7 @@ const Chatbot = () => {
                 whileTap={{ scale: 0.95 }}
                 animate={!isOpen ? { boxShadow: ['0 8px 24px rgba(37, 99, 235, 0.28)', '0 8px 34px rgba(37, 99, 235, 0.58)', '0 8px 24px rgba(37, 99, 235, 0.28)'] } : undefined}
                 transition={{ duration: 2.2, repeat: !isOpen ? Infinity : 0, ease: 'easeInOut' }}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={handleToggle}
                 className={`flex items-center gap-2 p-1 rounded-full shadow-2xl transition-colors duration-300 ${
                     isOpen ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-blue-600 text-white hover:bg-blue-700'
                 }`}
