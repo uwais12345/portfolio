@@ -33,6 +33,14 @@ body {
   -ms-user-select: none;
 }
 
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 input, textarea, [contenteditable="true"] {
   user-select: text !important;
   -webkit-user-select: text !important;
@@ -73,4 +81,19 @@ input, textarea, [contenteditable="true"] {
 @keyframes text-gradient {
   0% { background-position: 0% center; }
   100% { background-position: 200% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

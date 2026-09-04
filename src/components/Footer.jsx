@@ -3,6 +3,14 @@ import { Github, Linkedin, Mail, Phone, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
+    const footerLinks = [
+        { name: 'Home', href: '#home' },
+        { name: 'About', href: '#about' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Skills', href: '#skills' },
+        { name: 'Contact', href: '#contact' }
+    ];
+
     const scrollToTop = () => {
         const homeElement = document.getElementById('home');
         if (homeElement) {
@@ -13,25 +21,35 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12 transition-colors duration-300 relative">
+        <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-12 transition-colors duration-300 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-center md:text-left">
-                        <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent mb-1">
+                        <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent mb-1">
                             Mohamed Uwais M N
                         </h3>
                         <p className="text-sm font-medium text-slate-600 dark:text-slate-400">
                             Full-Stack Software Engineer & AI Specialist
                         </p>
+                        <p className="mt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400">Available for opportunities</p>
                     </div>
 
+                    <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {footerLinks.map((link) => (
+                            <a key={link.name} href={link.href} className="transition-colors hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:hover:text-blue-400">
+                                {link.name}
+                            </a>
+                        ))}
+                    </nav>
+
                     {/* Social Links */}
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-3" aria-label="Social and contact links">
                         <a
                             href="https://github.com/uwais12345"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-500 transition-colors shadow-xs"
+                            aria-label="GitHub Profile"
+                            className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="GitHub Profile"
                         >
                             <Github size={20} />
@@ -40,7 +58,8 @@ const Footer = () => {
                             href="https://www.linkedin.com/in/mohamed-uwais-m-n/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-500 transition-colors shadow-xs"
+                            aria-label="LinkedIn Profile"
+                            className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="LinkedIn Profile"
                         >
                             <Linkedin size={20} />
@@ -49,7 +68,8 @@ const Footer = () => {
                             href="https://leetcode.com/u/MOHAMED_UWAIS_MN/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-500 transition-colors shadow-xs flex items-center justify-center"
+                            aria-label="LeetCode Profile"
+                            className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs flex items-center justify-center"
                             title="LeetCode Profile"
                         >
                             <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -58,14 +78,16 @@ const Footer = () => {
                         </a>
                         <a
                             href="mailto:uwaismohamed208@gmail.com"
-                            className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-500 transition-colors shadow-xs"
+                            aria-label="Send Email"
+                            className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="Send Email"
                         >
                             <Mail size={20} />
                         </a>
                         <a
                             href="tel:+918056793899"
-                            className="p-2.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-500 transition-colors shadow-xs"
+                            aria-label="Call Phone"
+                            className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-500 transition-colors shadow-xs"
                             title="Call Phone"
                         >
                             <Phone size={20} />
@@ -76,7 +98,8 @@ const Footer = () => {
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={scrollToTop}
-                            className="p-2.5 rounded-full bg-orange-600 text-white hover:bg-orange-700 transition-colors shadow-md ml-2"
+                            aria-label="Back to top"
+                            className="p-2.5 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-md hover:shadow-blue-500/20 ml-2"
                             title="Back to Top"
                         >
                             <ArrowUp size={20} />

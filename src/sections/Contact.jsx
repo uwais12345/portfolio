@@ -31,14 +31,33 @@ const Contact = () => {
         email: '',
         message: ''
     });
+    const [errors, setErrors] = useState({});
     const [status, setStatus] = useState('');
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        if (errors[name]) setErrors({ ...errors, [name]: '' });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const trimmedData = {
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            message: formData.message.trim()
+        };
+        const validationErrors = {};
+
+        if (trimmedData.name.length < 2) validationErrors.name = 'Please enter your name.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedData.email)) validationErrors.email = 'Please enter a valid email address.';
+        if (trimmedData.message.length < 10) validationErrors.message = 'Please enter at least 10 characters.';
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            setStatus('');
+            return;
+        }
 
         // Your WhatsApp number (91 is country code)
         const phoneNumber = "918056793899";
@@ -46,27 +65,30 @@ const Contact = () => {
         // Construct the message
         const message = `Hello Mohamed Uwais, 
 
-I'm *${formData.name}*.
-*Email:* ${formData.email}
+    I'm *${trimmedData.name}*.
+*Email:* ${trimmedData.email}
 
 *Message:* 
-${formData.message}`;
+${trimmedData.message}`;
 
         // Encode and redirect
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
         // Open WhatsApp in a new tab
-        window.open(whatsappUrl, '_blank');
+        const whatsappWindow = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
         // Provide feedback to user
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setStatus(whatsappWindow ? 'success' : 'error');
+        if (whatsappWindow) {
+            setErrors({});
+            setFormData({ name: '', email: '', message: '' });
+        }
         setTimeout(() => setStatus(''), 5000);
     };
 
     return (
-        <section id="contact" className="py-24 bg-white dark:bg-slate-800 transition-colors duration-300">
+        <section id="contact" className="py-12 sm:py-16 bg-white dark:bg-slate-900 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header Fade In */}
                 <motion.div
@@ -74,10 +96,10 @@ ${formData.message}`;
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">Get In Touch</h2>
-                    <div className="w-20 h-1 bg-orange-600 mx-auto rounded-full"></div>
+                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </motion.div>
 
                 {/* Staggered Fade In Grid */}
@@ -86,7 +108,7 @@ ${formData.message}`;
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.15 }}
-                    className="grid md:grid-cols-2 gap-12"
+                    className="grid md:grid-cols-2 gap-8"
                 >
                     {/* Left Column: Contact Details Fade In */}
                     <motion.div variants={fadeInVariants}>
@@ -96,8 +118,8 @@ ${formData.message}`;
                         </p>
 
                         <div className="space-y-6">
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <MapPin size={24} />
                                 </div>
                                 <div>
@@ -108,25 +130,25 @@ ${formData.message}`;
                                 </div>
                             </motion.div>
 
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <Mail size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Email</h4>
-                                    <a href="mailto:uwaismohamed208@gmail.com" className="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                                    <a href="mailto:uwaismohamed208@gmail.com" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         uwaismohamed208@gmail.com
                                     </a>
                                 </div>
                             </motion.div>
 
-                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors">
-                                <div className="p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+                            <motion.div variants={fadeInVariants} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-950/40 transition-colors">
+                                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
                                     <Phone size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-semibold text-slate-900 dark:text-white">Phone</h4>
-                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors">
+                                    <a href="tel:+918056793899" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                                         +91 8056793899
                                     </a>
                                 </div>
@@ -137,9 +159,9 @@ ${formData.message}`;
                     {/* Right Column: Contact Form Fade In */}
                     <motion.div
                         variants={fadeInVariants}
-                        className="bg-slate-50 dark:bg-slate-700/60 p-8 rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-600/60"
+                        className="bg-slate-50 dark:bg-slate-950/60 p-6 sm:p-7 rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-800/80"
                     >
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} noValidate className="space-y-5">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                                     Your Name
@@ -152,9 +174,12 @@ ${formData.message}`;
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all"
+                                    aria-invalid={Boolean(errors.name)}
+                                    aria-describedby={errors.name ? 'name-error' : undefined}
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                                     placeholder="John Doe"
                                 />
+                                {errors.name && <p id="name-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{errors.name}</p>}
                             </div>
 
                             <div>
@@ -169,9 +194,12 @@ ${formData.message}`;
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all"
+                                    aria-invalid={Boolean(errors.email)}
+                                    aria-describedby={errors.email ? 'email-error' : undefined}
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                                     placeholder="john@example.com"
                                 />
+                                {errors.email && <p id="email-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{errors.email}</p>}
                             </div>
 
                             <div>
@@ -185,24 +213,25 @@ ${formData.message}`;
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
+                                    aria-invalid={Boolean(errors.message)}
+                                    aria-describedby={errors.message ? 'message-error' : undefined}
                                     rows="4"
-                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white focus:ring-2 focus:ring-orange-600 focus:border-transparent outline-none transition-all resize-none shadow-sm"
+                                    className="w-full px-4 py-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none shadow-sm"
                                     placeholder="Your message here..."
                                 ></textarea>
+                                {errors.message && <p id="message-error" className="mt-1 text-xs text-red-600 dark:text-red-400">{errors.message}</p>}
                             </div>
 
+                            <p className="text-xs text-slate-500 dark:text-slate-400">This opens WhatsApp with your message ready to send.</p>
                             <button
                                 type="submit"
-                                className="w-full py-3 px-6 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg flex items-center justify-center gap-2"
+                                className="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg hover:shadow-blue-500/20 flex items-center justify-center gap-2 text-sm sm:text-base"
                             >
-                                Send Message on WhatsApp <Send size={20} />
+                                Open WhatsApp <Send size={18} />
                             </button>
 
-                            {status === 'success' && (
-                                <p className="text-green-600 dark:text-green-400 text-center text-sm mt-2">
-                                    Opening WhatsApp...
-                                </p>
-                            )}
+                            {status === 'success' && <p role="status" className="mt-2 text-center text-sm font-medium text-emerald-600 dark:text-emerald-400">Opening WhatsApp...</p>}
+                            {status === 'error' && <p role="alert" className="mt-2 text-center text-sm font-medium text-red-600 dark:text-red-400">WhatsApp could not be opened. Please use the email or phone links.</p>}
                         </form>
                     </motion.div>
                 </motion.div>
