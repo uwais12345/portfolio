@@ -36,6 +36,34 @@ const projectsData = [
         live: "#"
     },
     {
+        id: 4,
+        filterGroup: "AI & Geospatial",
+        category: "Geospatial Research",
+        title: "Route Resilience",
+        shortDesc: "A Streamlit/Folium research prototype exploring road-network failure analysis, with satellite extraction and topology healing planned as future work.",
+        fullDesc: "Route Resilience studies how urban road networks respond when important junctions fail. The current deliverable is a Streamlit and Folium reference dashboard using a hardcoded five-node sample graph; it is not yet connected to real satellite-derived or healed road data.",
+        highlightsTitle: "Current Prototype",
+        highlights: [
+            "Streamlit and Folium dashboard prototype visualizing a small, hardcoded five-node graph.",
+            "Esri World Imagery is wired as a map layer, but rendering with real extracted road networks has not been validated.",
+            "AI segmentation, skeletonization, graph healing, and real-data resilience analysis are not implemented yet."
+        ],
+        tech: ["Python", "Streamlit", "Folium", "Esri World Imagery", "Sample graph"],
+        projectType: "research-prototype",
+        subtitle: "Occlusion-Robust Road Extraction & Graph-Theoretic Criticality Analysis for Urban Mobility",
+        pipelineStages: [
+            "Satellite imagery",
+            "Road segmentation",
+            "Skeletonization",
+            "Graph construction",
+            "MST topology healing",
+            "Criticality analysis"
+        ],
+        plannedTech: ["Sentinel-2", "PyTorch", "U-Net / DeepLabV3+", "OpenCV", "scikit-image", "OSMnx", "NetworkX", "MST / Union-Find", "FastAPI (planned)"],
+        github: null,
+        live: null
+    },
+    {
         id: 3,
         filterGroup: "Data Analysis",
         category: "Data Analysis",
@@ -53,7 +81,7 @@ const projectsData = [
     }
 ];
 
-const categories = ["All", "AI & MERN", "Data Analysis"];
+const categories = ["All", "AI & MERN", "AI & Geospatial", "Data Analysis"];
 
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState("All");
@@ -243,13 +271,46 @@ const Projects = () => {
                                 {selectedProject.title}
                             </h3>
 
+                            {selectedProject.subtitle && (
+                                <p className="-mt-2 mb-4 text-sm font-semibold leading-relaxed text-blue-600 dark:text-blue-400">
+                                    {selectedProject.subtitle}
+                                </p>
+                            )}
+
                             <p id="project-modal-description" className="mb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-300 sm:text-base">
                                 {selectedProject.fullDesc}
                             </p>
 
+                            {selectedProject.projectType === 'research-prototype' && (
+                                <>
+                                    <section className="mb-6 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4" aria-labelledby="prototype-status-heading">
+                                        <h4 id="prototype-status-heading" className="mb-2 text-sm font-bold text-amber-700 dark:text-amber-300">
+                                            Prototype status
+                                        </h4>
+                                        <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                                            Research prototype using a hardcoded five-node sample graph. It is not a deployed road-analysis service and does not yet process real satellite imagery or real road networks.
+                                        </p>
+                                    </section>
+
+                                    <section className="mb-6" aria-labelledby="research-pipeline-heading">
+                                        <h4 id="research-pipeline-heading" className="mb-3 text-sm font-bold text-slate-900 dark:text-white">
+                                            Research pipeline <span className="font-medium text-slate-500">(planned)</span>
+                                        </h4>
+                                        <ol className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                                            {selectedProject.pipelineStages.map((stage, index) => (
+                                                <li key={stage} className="flex min-h-12 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium text-slate-700 dark:border-slate-800 dark:bg-slate-950/70 dark:text-slate-300">
+                                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600/10 text-[10px] font-bold text-blue-600 dark:text-blue-400">{index + 1}</span>
+                                                    {stage}
+                                                </li>
+                                            ))}
+                                        </ol>
+                                    </section>
+                                </>
+                            )}
+
                             <div className="mb-6 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
                                 <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
-                                    <Sparkles size={16} className="text-blue-500" /> Key Architecture Highlights
+                                    <Sparkles size={16} className="text-blue-500" /> {selectedProject.highlightsTitle || "Key Architecture Highlights"}
                                 </h4>
                                 <ul className="space-y-2">
                                     {selectedProject.highlights.map((highlight, i) => (
@@ -274,15 +335,42 @@ const Projects = () => {
                                 </div>
                             </div>
 
+                            {selectedProject.plannedTech && (
+                                <div className="mb-8">
+                                    <h4 className="mb-3 text-sm font-bold text-slate-900 dark:text-white">
+                                        Research technologies <span className="font-medium text-slate-500">(planned, not implemented)</span>
+                                    </h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {selectedProject.plannedTech.map((technology) => (
+                                            <span key={technology} className="rounded-full border border-slate-300 border-dashed px-3 py-1 text-xs text-slate-600 dark:border-slate-700 dark:text-slate-400">
+                                                {technology}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {selectedProject.projectType === 'research-prototype' && (
+                                <p className="mb-6 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                                    Navigation tools help answer where to go; this research asks which network connections are structurally important and how connectivity may change after a failure. Resilient-route scoring is planned and concerns network disruption, not guaranteed physical safety from hazards.
+                                </p>
+                            )}
+
                             <div className="flex gap-4">
-                                <a
-                                    href={selectedProject.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-center transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-blue-500/20"
-                                >
-                                    <Github size={20} /> View Source Code
-                                </a>
+                                {selectedProject.github ? (
+                                    <a
+                                        href={selectedProject.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-center transition-colors flex items-center justify-center gap-2 shadow-md hover:shadow-blue-500/20"
+                                    >
+                                        <Github size={20} /> View Source Code
+                                    </a>
+                                ) : selectedProject.projectType === 'research-prototype' ? (
+                                    <p className="w-full rounded-xl border border-slate-200 px-4 py-3 text-center text-sm font-medium text-slate-500 dark:border-slate-800 dark:text-slate-400">
+                                        Demo and source links coming soon
+                                    </p>
+                                ) : null}
                             </div>
                         </motion.div>
                     </div>
